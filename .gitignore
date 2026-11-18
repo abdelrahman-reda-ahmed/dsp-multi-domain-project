@@ -3,8 +3,10 @@ __pycache__/
 .venv/
 venv/
 
-# Provided/generated data files - the folders are kept with .gitkeep placeholders
+# Data folders: keep the sample inputs, ignore any other added/generated files
 data/audio/*
 !data/audio/.gitkeep
+!data/audio/clean.wav
 data/images/*
 !data/images/.gitkeep
+!data/images/sample.jpg

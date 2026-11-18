@@ -79,11 +79,13 @@ The project expects two provided input files:
 1. A **clean WAV file** — place it in `data/audio/` (any `*.wav` file).
 2. A **grayscale image** — place it in `data/images/` (e.g. `*.png`, `*.jpg`, `*.bmp`).
 
+Two ready-to-use samples are included in the repository:
+`data/audio/clean.wav` and `data/images/sample.jpg`. You may replace either one
+with your own file.
+
 The master script automatically picks the first matching file in each folder.
 If a file is missing, it prints a friendly message and the affected students fall
 back to a small synthetic demo signal/image so the whole project still runs.
-
-> Note: the raw data files are intentionally not committed to the repository.
 
 ---
 
