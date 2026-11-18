@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Provided/generated data files - the folders are kept with .gitkeep placeholders
+data/audio/*
+!data/audio/.gitkeep
+data/images/*
+!data/images/.gitkeep
