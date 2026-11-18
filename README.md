@@ -116,10 +116,10 @@ written to `data/audio/filtered.wav` (or `filtered_demo.wav` with the demo signa
 
 - Edit **only your own file** under `students/studentN_*/`. The master script and
   the helper module are shared by everyone.
-- Student 1 is fully implemented and can be used as a reference. Students 2-6
-  contain **only the required function names (with their parameters) and empty
-  `pass` placeholders** — you supply the imports, docstrings, implementation,
-  and plots for your own file.
+- Student 3 is fully implemented and can be used as a reference. Students 1, 2,
+  4, 5 and 6 contain **only the required function names (with their parameters)
+  and empty `pass` placeholders** — you supply the imports, docstrings,
+  implementation, and plots for your own file.
 - Running a placeholder-only module before implementing it does nothing (each
   placeholder returns immediately). You can still verify that it loads:
 
