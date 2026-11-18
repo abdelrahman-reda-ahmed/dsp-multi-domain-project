@@ -171,6 +171,9 @@ def main(audio_path=None, show=True):
     """Run the Student 3 experiment; fall back to a demo signal if no WAV exists."""
     print("Loading audio and adding power-line interference...")
 
+    if audio_path is None:
+        audio_path = helpers.find_data_file(helpers.AUDIO_DIR, helpers.AUDIO_EXTENSIONS)
+
     if audio_path is None or not Path(audio_path).is_file():
         print("  [!] No WAV file supplied - using a synthetic demo signal.")
         print("      Place a clean .wav file in data/audio/ to use real audio.")
