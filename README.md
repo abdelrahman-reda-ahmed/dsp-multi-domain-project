@@ -116,17 +116,17 @@ written to `data/audio/filtered.wav` (or `filtered_demo.wav` with the demo signa
 
 - Edit **only your own file** under `students/studentN_*/`. The master script and
   the helper module are shared by everyone.
-- Every file is a **runnable skeleton**: it contains a `main()` function, clearly
-  named helper functions with docstrings, `TODO` comments marking the work you
-  must implement, and placeholder plots. No DSP logic is filled in for you.
-- You can run your module before writing any code — it prints a "SKELETON MODE"
-  notice and shows empty placeholder figures:
+- Every student file contains **only the required function names (with their
+  parameters) and empty `pass` placeholders**. You supply the imports,
+  docstrings, implementation, and plots for your own file.
+- Running a module before implementing it does nothing (each placeholder returns
+  immediately). You can still verify that it loads:
 
   ```bash
   python students/student3_audio_analysis/student3.py
   ```
 
-- Keep function names and signatures intact — `main.py` calls each module's
+- Keep function names and parameters intact — `main.py` calls each module's
   `main()` by name, and teammates may rely on the shared helpers.
 - If you need a common utility (loading, plotting, MSE/PSNR), add or use a
   function in `utils/helpers.py` instead of duplicating code.
