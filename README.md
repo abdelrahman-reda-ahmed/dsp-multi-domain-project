@@ -34,11 +34,23 @@ dsp-multi-domain-project/
 ├── README.md
 ├── requirements.txt
 ├── main.py                          # Master script that runs the entire project in order
+├── gui/                             # Streamlit web interface (one page per module)
+│   ├── app.py                       # Home page + full-pipeline runner
+│   ├── _shared.py                   # Shared page styling and utility helpers
+│   └── pages/                       # Six module pages, numbered 1–6
+│       ├── 1_Mathematical_Signal_DTFT.py
+│       ├── 2_Convolution_Difference.py
+│       ├── 3_Audio_Analysis.py
+│       ├── 4_Audio_Filtering.py
+│       ├── 5_2D_Fourier_Image_Filtering.py
+│       └── 6_Image_Noise_Removal.py
 ├── data/
 │   ├── audio/
-│   │   └── .gitkeep                 # Placeholder for the provided clean WAV file
+│   │   ├── clean.wav                # Bundled sample signal (used by the demo)
+│   │   └── .gitkeep
 │   └── images/
-│       └── .gitkeep                 # Placeholder for the provided grayscale image
+│       ├── sample.jpg               # Bundled sample image (used by the demo)
+│       └── .gitkeep
 ├── students/
 │   ├── student1_mathematical_signal_dtft/
 │   │   └── student1.py
@@ -68,13 +80,14 @@ source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Dependencies: `numpy`, `scipy`, `matplotlib`, `opencv-python`, and `soundfile`.
+Dependencies: `numpy`, `scipy`, `matplotlib`, `opencv-python`, `soundfile`, and
+`streamlit` (for the web interface).
 
 ---
 
 ## Input data
 
-The project expects two provided input files:
+The project uses two input files:
 
 1. A **clean WAV file** — place it in `data/audio/` (any `*.wav` file).
 2. A **grayscale image** — place it in `data/images/` (e.g. `*.png`, `*.jpg`, `*.bmp`).
@@ -114,19 +127,44 @@ written to `data/audio/filtered.wav` (or `filtered_demo.wav` with the demo signa
 
 ---
 
+## Interactive GUI (Streamlit)
+
+A modern, browser-based interface exposes all six modules with per-module
+parameters, run buttons, plots, audio playback, images and evaluation metrics.
+From the project root:
+
+```bash
+streamlit run gui/app.py
+```
+
+Streamlit then serves the app at `http://localhost:8501`. The home page shows the
+project overview, live module status, and a **Run full project pipeline** button
+that executes `main.py` and displays the console log and generated artifacts.
+Use the sidebar page menu to open an individual module.
+
+Each module page has the same structure: adjustable parameters, a **Run** button,
+a loading spinner, and output tabs for plots, images, audio and numeric results
+(MSE / PSNR where applicable). A page calls the corresponding student module
+automatically once its functions are implemented; until then it shows a clearly
+labelled **reference demo** with the same controls and outputs, so every page is
+usable while the student files are still in progress. Missing files in `data/`
+are handled with synthetic demo signals/images — no manual path entry is needed.
+
+---
+
 ## How each student should work
 
 - Edit **only your own file** under `students/studentN_*/`. The master script and
   the helper module are shared by everyone.
-- Student 3 is fully implemented and can be used as a reference. Students 1, 2,
-  4, 5 and 6 contain **only the required function names (with their parameters)
+- Students 3 and 5 are fully implemented and can be used as references. Students
+  1, 2, 4 and 6 contain **only the required function names (with their parameters)
   and empty `pass` placeholders** — you supply the imports, docstrings,
   implementation, and plots for your own file.
 - Running a placeholder-only module before implementing it does nothing (each
-  placeholder returns immediately). You can still verify that it loads:
+  placeholder returns immediately). Verify that every module still loads with:
 
   ```bash
-  python students/student3_audio_analysis/student3.py
+  python main.py
   ```
 
 - Keep function names and parameters intact — `main.py` calls each module's
