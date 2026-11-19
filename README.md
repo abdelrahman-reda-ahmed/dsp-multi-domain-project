@@ -73,11 +73,15 @@ dsp-multi-domain-project/
 
 ---
 
-## Installation (Linux)
+## Installation
 
-Use Python 3.9 or newer. All commands below are for a **Linux terminal** and are
-run from the project root (the folder containing `main.py`, `README.md` and
-`Textgui/`):
+Use Python 3.9 or newer. All commands are run from the project root (the folder
+containing `main.py`, `README.md` and `Textgui/`).
+
+Dependencies: `numpy`, `scipy`, `matplotlib`, `opencv-python`, `soundfile`, and
+`customtkinter` (for the desktop interface; pulls in Pillow automatically).
+
+### Linux
 
 ```bash
 python3 -m venv .venv
@@ -92,50 +96,86 @@ library used by the GUI is a separate system package — install it with:
 sudo apt install python3-tk
 ```
 
-Dependencies: `numpy`, `scipy`, `matplotlib`, `opencv-python`, `soundfile`, and
-`customtkinter` (for the desktop interface; pulls in Pillow automatically).
+### Windows
+
+```bat
+py -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+`py` is the standard Python launcher on Windows. On Windows, Tk is included with
+Python, so no extra system package is needed. If `py` is not available, use
+`python` instead.
 
 ---
 
-## Quick start (Linux)
+## Quick start
 
-Follow these steps from a terminal. Every command assumes Linux and is run from
-the project root.
+Follow these steps from a terminal, using the commands for your operating system.
 
 **1. Enter the project folder**
 
+Linux:
 ```bash
 cd ~/path/to/dsp-multi-domain-project
 ```
 
+Windows (Command Prompt / PowerShell):
+```bat
+cd C:\path\to\dsp-multi-domain-project
+```
+
 **2. Create and activate the virtual environment (once)**
 
+Linux:
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Your prompt should now show `(.venv)`. Activate it again with
-`source .venv/bin/activate` in every new terminal; leave it with `deactivate`.
+Windows:
+```bat
+py -m venv .venv
+.venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Your prompt should now show `(.venv)`. Activate it again in every new terminal
+(`source .venv/bin/activate` on Linux, `.venv\Scripts\activate` on Windows);
+leave it with `deactivate`.
 
 **3A. Run in the terminal (no GUI)**
 
+Linux:
 ```bash
 python3 main.py
+```
+
+Windows:
+```bat
+python main.py
 ```
 
 Runs all six modules in order and prints a labelled section for each one.
 
 **3B. Run the desktop GUI**
 
+Linux:
 ```bash
 python3 Textgui/main_window.py
 ```
 
+Windows:
+```bat
+python Textgui/main_window.py
+```
+
 Opens the dark-themed CustomTkinter window with the sidebar and all six module
-pages. (Equivalent: `python3 -m Textgui.main_window`.) If `tkinter` fails to
-import, install `python3-tk` as shown in the Installation section.
+pages. The `-m` form is equivalent: `python3 -m Textgui.main_window` on Linux
+and `python -m Textgui.main_window` on Windows. If `tkinter` fails to import on
+Linux, install `python3-tk` as shown in the Installation section.
 
 ---
 
@@ -160,8 +200,14 @@ back to a small synthetic demo signal/image so the whole project still runs.
 
 From the project root:
 
+Linux:
 ```bash
 python3 main.py
+```
+
+Windows:
+```bat
+python main.py
 ```
 
 This prints a clearly labelled section for each student:
@@ -187,11 +233,18 @@ A modern desktop interface exposes all six modules with per-module parameters,
 run buttons, plots, audio playback, images and evaluation metrics. From the
 project root:
 
+Linux:
 ```bash
 python3 Textgui/main_window.py
 ```
 
-(Equivalently: `python3 -m Textgui.main_window`.) No browser or local server is
+Windows:
+```bat
+python Textgui/main_window.py
+```
+
+Equivalently, use `python3 -m Textgui.main_window` on Linux or
+`python -m Textgui.main_window` on Windows. No browser or local server is
 needed — the app opens in its own window with a dark theme and a sidebar. The
 **Overview** page shows the project summary, live module status and a
 **Run full project pipeline** button that executes `main.py` and displays the
@@ -220,9 +273,7 @@ handled with synthetic demo signals/images — no manual path entry is needed.
 - Running a placeholder-only module before implementing it does nothing (each
   placeholder returns immediately). Verify that every module still loads with:
 
-  ```bash
-  python3 main.py
-  ```
+  Linux: `python3 main.py`  ·  Windows: `python main.py`
 
 - Keep function names and parameters intact — `main.py` calls each module's
   `main()` by name, and teammates may rely on the shared helpers.
