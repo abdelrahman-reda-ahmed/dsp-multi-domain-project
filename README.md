@@ -73,18 +73,69 @@ dsp-multi-domain-project/
 
 ---
 
-## Installation
+## Installation (Linux)
 
-Use Python 3.9 or newer. From the project root:
+Use Python 3.9 or newer. All commands below are for a **Linux terminal** and are
+run from the project root (the folder containing `main.py`, `README.md` and
+`Textgui/`):
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
+```
+
+`python3` is the standard interpreter name on Linux. On Debian/Ubuntu the Tk
+library used by the GUI is a separate system package — install it with:
+
+```bash
+sudo apt install python3-tk
 ```
 
 Dependencies: `numpy`, `scipy`, `matplotlib`, `opencv-python`, `soundfile`, and
 `customtkinter` (for the desktop interface; pulls in Pillow automatically).
+
+---
+
+## Quick start (Linux)
+
+Follow these steps from a terminal. Every command assumes Linux and is run from
+the project root.
+
+**1. Enter the project folder**
+
+```bash
+cd ~/path/to/dsp-multi-domain-project
+```
+
+**2. Create and activate the virtual environment (once)**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+Your prompt should now show `(.venv)`. Activate it again with
+`source .venv/bin/activate` in every new terminal; leave it with `deactivate`.
+
+**3A. Run in the terminal (no GUI)**
+
+```bash
+python3 main.py
+```
+
+Runs all six modules in order and prints a labelled section for each one.
+
+**3B. Run the desktop GUI**
+
+```bash
+python3 Textgui/main_window.py
+```
+
+Opens the dark-themed CustomTkinter window with the sidebar and all six module
+pages. (Equivalent: `python3 -m Textgui.main_window`.) If `tkinter` fails to
+import, install `python3-tk` as shown in the Installation section.
 
 ---
 
@@ -110,7 +161,7 @@ back to a small synthetic demo signal/image so the whole project still runs.
 From the project root:
 
 ```bash
-python main.py
+python3 main.py
 ```
 
 This prints a clearly labelled section for each student:
@@ -137,10 +188,10 @@ run buttons, plots, audio playback, images and evaluation metrics. From the
 project root:
 
 ```bash
-python Textgui/main_window.py
+python3 Textgui/main_window.py
 ```
 
-(Equivalently: `python -m Textgui.main_window`.) No browser or local server is
+(Equivalently: `python3 -m Textgui.main_window`.) No browser or local server is
 needed — the app opens in its own window with a dark theme and a sidebar. The
 **Overview** page shows the project summary, live module status and a
 **Run full project pipeline** button that executes `main.py` and displays the
@@ -170,7 +221,7 @@ handled with synthetic demo signals/images — no manual path entry is needed.
   placeholder returns immediately). Verify that every module still loads with:
 
   ```bash
-  python main.py
+  python3 main.py
   ```
 
 - Keep function names and parameters intact — `main.py` calls each module's
@@ -178,7 +229,7 @@ handled with synthetic demo signals/images — no manual path entry is needed.
 - If you need a common utility (loading, plotting, MSE/PSNR), add or use a
   function in `utils/helpers.py` instead of duplicating code.
 - Import shared helpers from the project root, e.g. `from utils import helpers`
-  when running `python main.py`. When running a student file directly, add the
+  when running `python3 main.py`. When running a student file directly, add the
   project root to `sys.path` as shown in the provided skeletons.
 
 ---
