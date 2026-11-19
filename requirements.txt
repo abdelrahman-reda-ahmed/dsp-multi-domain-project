@@ -3,4 +3,4 @@ scipy
 matplotlib
 opencv-python
 soundfile
-streamlit
+customtkinter
