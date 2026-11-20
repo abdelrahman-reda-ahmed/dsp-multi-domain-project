@@ -266,10 +266,10 @@ handled with synthetic demo signals/images — no manual path entry is needed.
 
 - Edit **only your own file** under `students/studentN_*/`. The master script and
   the helper module are shared by everyone.
-- Students 3 and 5 are fully implemented and can be used as references. Students
-  1, 2, 4 and 6 contain **only the required function names (with their parameters)
-  and empty `pass` placeholders** — you supply the imports, docstrings,
-  implementation, and plots for your own file.
+- Students 2, 3 and 5 are fully implemented and can be used as references.
+  Students 1, 4 and 6 still contain **only the required function names (with
+  their parameters) and empty `pass` placeholders** — you supply the imports,
+  docstrings, implementation, and plots for your own file.
 - Running a placeholder-only module before implementing it does nothing (each
   placeholder returns immediately). Verify that every module still loads with:
 
