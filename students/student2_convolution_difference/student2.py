@@ -4,7 +4,6 @@ from scipy.signal import lfilter
 
 
 def moving_average(signal, window_size=5):
-    # moving average = convolution مع نافذة كلها 1/window_size
     window = np.ones(window_size) / window_size
     return np.convolve(signal, window, mode="same")
 
