@@ -222,8 +222,8 @@ This prints a clearly labelled section for each student:
 ```
 
 and finishes with a summary confirming that the full multi-domain project has
-completed. Once Student 4 implements the TODOs, the filtered output will be
-written to `data/audio/filtered.wav` (or `filtered_demo.wav` with the demo signal).
+completed. Student 4 writes the filtered output to `data/audio/filtered.wav`
+(or `filtered_demo.wav` when it falls back to the synthetic demo signal).
 
 ---
 
@@ -266,12 +266,8 @@ handled with synthetic demo signals/images — no manual path entry is needed.
 
 - Edit **only your own file** under `students/studentN_*/`. The master script and
   the helper module are shared by everyone.
-- Students 1, 2, 3, 5 and 6 are fully implemented and can be used as references.
-  Student 4 still contains **only the required function names (with their
-  parameters) and empty `pass` placeholders** — you supply the imports,
-  docstrings, implementation, and plots for your own file.
-- Running a placeholder-only module before implementing it does nothing (each
-  placeholder returns immediately). Verify that every module still loads with:
+- All six student modules are fully implemented and can be used as references.
+- Verify that every module still loads and the full pipeline runs with:
 
   Linux: `python3 main.py`  ·  Windows: `python main.py`
 
