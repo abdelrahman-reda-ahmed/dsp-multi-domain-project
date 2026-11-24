@@ -222,6 +222,15 @@ def to_uint8(array, normalize: bool = False) -> np.ndarray:
     if normalize:
         low, high = float(values.min()), float(values.max())
         values = (values - low) / max(high - low, 1e-12) * 255.0
+    elif (
+        np.issubdtype(np.asarray(array).dtype, np.floating)
+        and values.size
+        and np.isfinite(values).any()
+        and float(np.nanmax(values)) <= 1.0
+    ):
+        # Float images use the project's [0, 1] convention; without this step
+        # every pixel below 1.0 truncates to 0 and the image renders black.
+        values = values * 255.0
     return np.clip(np.nan_to_num(values, nan=0.0), 0.0, 255.0).astype(np.uint8)
 
 
